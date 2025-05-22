@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AES Encrypt/Decrypt</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #0d1117;
+      background-image: radial-gradient(circle at center, #1f2937, #0d1117 70%);
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      color: #c9d1d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cyber-form {
+      background: #161b22;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 170, 0.4);
+      width: 100%;
+      max-width: 480px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #58a6ff;
+      letter-spacing: 1.5px;
+    }
+
+    .form-label {
+      color: #8b949e;
+      margin-bottom: 8px;
+    }
+
+    .form-control,
+    input[type="file"] {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .form-control:focus,
+    input[type="file"]:focus {
+      background-color: #161b22;
+      border-color: #58a6ff;
+      box-shadow: 0 0 5px #58a6ff;
+      color: #fff;
+    }
+
+    .form-check-label {
+      color: #c9d1d9;
+      font-weight: 500;
+    }
+
+    .btn-cyber {
+      background: linear-gradient(90deg, #00ffaa, #00ddff);
+      border: none;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #0d1117;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      transition: all 0.3s ease-in-out;
+      margin-top: 20px;
+    }
+
+    .btn-cyber:hover {
+      background: linear-gradient(90deg, #00ddff, #00ffaa);
+      box-shadow: 0 0 15px #00ffaa;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <form class="cyber-form" method="post" enctype="multipart/form-data" novalidate>
+    <h1><i class="fas fa-shield-alt"></i> AES File Encrypt/Decrypt</h1>
+
+    <div class="mb-3">
+      <label for="file" class="form-label">Chọn tệp cần xử lý</label>
+      <input type="file" class="form-control" id="file" name="file" required style="border-radius: 12px; background-color: #ffffff; padding: 10px;" />
+    </div>
+
+    <div class="mb-3">
+      <label for="key" class="form-label">Khóa AES (16, 24 hoặc 32 ký tự)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="key"
+        name="key"
+        required
+        placeholder="Nhập khóa bảo mật"
+        pattern=".{16,32}"
+        title="Key phải dài 16, 24 hoặc 32 ký tự"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Chọn chế độ</label>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="operation"
+          id="encrypt"
+          value="encrypt"
+          checked
+        />
+        <label class="form-check-label" for="encrypt">Mã hóa</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="operation"
+          id="decrypt"
+          value="decrypt"
+        />
+        <label class="form-check-label" for="decrypt">Giải mã</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-cyber">
+      <i class="fas fa-lock"></i> Xử lý tập tin
+    </button>
+  </form>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
